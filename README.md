@@ -11,7 +11,7 @@ The goal of senlinplot is to plot forest plot from multiple GWAS summary statist
 You can install the development version of senlinplot like so:
 
 ``` r
-if(!require("MrGWASSS")){
+if(!require("senlinplot")){
   devtools::install_github("Broccolito/senlinplot")
   library(senlinplot)
 }
