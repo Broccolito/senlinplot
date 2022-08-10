@@ -24,8 +24,8 @@
 #' @export
 plot_forestplot = function(stats){
   stats[[" "]] = paste(rep(" ", 50), collapse = "")
-  names(stats)[c(2, 5, 10, 6, 9)] = c("Dataset", "P-Value", " ", "95% CI", "N")
-  plt = forest(stats[,c(2, 5, 10, 6, 9)],
+  names(stats)[c(2, 6, 10, 5, 9)] = c("Dataset", "Beta (95% CI)", " ", "P-Value", "N")
+  plt = forest(stats[,c(2, 6, 10, 5, 9)],
                est = stats$effect,
                lower = stats$c95_lower,
                upper = stats$c95_upper,
