@@ -1,10 +1,10 @@
 Package: senlinplot
-Title: What the Package Does (One Line, Title Case)
+Title: From GWAS Summary Statistics to Forest Plots
 Version: 0.0.0.9000
 Authors@R: 
-    person("First", "Last", , "first.last@example.com", role = c("aut", "cre"),
-           comment = c(ORCID = "YOUR-ORCID-ID"))
-Description: What the package does (one paragraph).
+    person("Wanjun", "Gu", , "wagu@health.ucsd.edu", role = c("aut", "cre"),
+           comment = c(ORCID = "0000-0002-7342-7000"))
+Description: The goal of senlinplot is to make forest plost from multiple GWAS summary statistics files.
 License: MIT + file LICENSE
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
