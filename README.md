@@ -45,7 +45,7 @@ plot_forestplot_from_file(
 
 ```
 
+Here is an example figure generated using senlinplot:
 
-
-![Example file](github.com/Broccolito/senlinplot/12_48198234_G_T_forestplot.png)
+![Example file](12_48198234_G_T_forestplot.png)
 
