@@ -1,11 +1,7 @@
 
 # senlinplot
 
-<!-- badges: start -->
-
 <img src="logo.svg" alt="Badge" style="zoom:50%;" />
-
-<!-- badges: end -->
 
 The goal of senlinplot is to make forest plost from multiple GWAS summary statistics files.
 
