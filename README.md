@@ -18,7 +18,7 @@ if(!require("senlinplot")){
 
 ## Example
 
-This is a basic example which shows you how to Plot a forest plot for SNP 12:48198234:G:T, given file **CHD_TE_SUMSTAT_META_0110221.txt** and PVD_TE_META_X_0111221.txt
+This is a basic example which shows you how to Plot a forest plot for SNP 12:48198234:G:T, given file **CHD_TE_SUMSTAT_META_0110221.txt** and **PVD_TE_META_X_0111221.txt**
 
 ``` r
 library(senlinplot)
