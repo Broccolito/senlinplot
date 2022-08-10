@@ -32,7 +32,7 @@ plot_forestplot = function(stats){
                sizes = stats$se,
                ci_column = 3,
                ref_line = 0,
-               footnote = stats$marker[1]
+               footnote = paste0(" ", stats$marker[1])
   )
   ggsave(filename = paste0(gsub(":","_",stats$marker[1]),"_forestplot.png"), device = "png", plot = plt,
          dpi = 1200, height = dim(stats)[1], width = 6)
