@@ -3,7 +3,7 @@
 
 <!-- badges: start -->
 
-![Badge](logo.svg)
+<img src="logo.svg" alt="Badge" style="zoom:50%;" />
 
 <!-- badges: end -->
 
