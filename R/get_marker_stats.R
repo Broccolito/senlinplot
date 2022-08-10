@@ -6,7 +6,13 @@
 #' @param dataset The name that the user wishes to give to the study
 #' @return d, a data frame of the summary statistics of the single variant specified
 #' @export
-get_marker_stats = function(filename, dataset){
+get_marker_stats = function(filename, dataset,
+                            snp_name,
+                            identifier_column_name,
+                            effectsize_column_name,
+                            stderr_column_name,
+                            pvalue_column_name,
+                            samplesize_column_name){
   filename = unlist(filename)
   dataset = unlist(dataset)
   cat(paste0("Looking for ", snp_name, " in ", filename, "...\n"))

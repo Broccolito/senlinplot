@@ -49,7 +49,13 @@ get_all_stats = function(
     split(.$filelist)
   dataset_list = tibble(dataset_list = dataset_list) %>%
     split(.$dataset_list)
-  stats = map2(filelist, dataset_list, get_marker_stats) %>%
+  stats = map2(filelist, dataset_list, get_marker_stats,
+               snp_name,
+               identifier_column_name,
+               effectsize_column_name,
+               stderr_column_name,
+               pvalue_column_name,
+               samplesize_column_name) %>%
     reduce(rbind.data.frame)
   return(stats)
 }
