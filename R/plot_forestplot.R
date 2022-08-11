@@ -3,6 +3,7 @@
 #' This function plots forest plot from the Data.Frame object from get_all_stats function
 #'
 #' @param stats The data.frame object output from get_all_stats function. The data.frame can be further modified by the user.
+#' @param device The format in which the forest plots are saved. png or pdf recommended
 #' @return NULL
 #' @examples
 #' get_all_stats(
@@ -22,21 +23,23 @@
 #'   samplesize_column_name = "N"
 #' ) %>% plot_forestplot()
 #' @export
-plot_forestplot = function(stats){
+plot_forestplot = function(stats, device = "pdf"){
   if(dim(stats)[1]<=1){
     return("Not enough data was provided...\n")
   }
   stats[[" "]] = paste(rep(" ", 50), collapse = "")
   names(stats)[c(2, 6, 10, 5, 9)] = c("Dataset", "Beta (95% CI)", " ", "P-Value", "N")
-  plt = forest(stats[,c(2, 6, 10, 5, 9)],
-               est = stats$effect,
-               lower = stats$c95_lower,
-               upper = stats$c95_upper,
-               sizes = stats$se,
-               ci_column = 3,
-               ref_line = 0,
-               footnote = paste0(" ", stats$marker[1])
+  plt = forest(
+    stats[,c(2, 6, 10, 5, 9)],
+    est = stats$effect,
+    lower = stats$c95_lower,
+    upper = stats$c95_upper,
+    sizes = stats$se,
+    ci_column = 3,
+    ref_line = 0,
+    footnote = paste0(" ", stats$marker[1])
   )
-  ggsave(filename = paste0(gsub(":","_",stats$marker[1]),"_forestplot.png"), device = "png", plot = plt,
-         dpi = 1200, height = dim(stats)[1], width = 6)
+  ggsave(filename = paste0(gsub(":","_",stats$marker[1]),"_forestplot.", device), device = device, plot = plt,
+         dpi = 1200, bg = "white")
+  dev.off()
 }
