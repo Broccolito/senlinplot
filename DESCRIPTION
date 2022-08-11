@@ -1,6 +1,6 @@
 Package: senlinplot
 Title: From GWAS Summary Statistics to Forest Plots
-Version: 0.0.0.9000
+Version: 1.0.0.0000
 Authors@R: 
     person("Wanjun", "Gu", , "wagu@health.ucsd.edu", role = c("aut", "cre"),
            comment = c(ORCID = "0000-0002-7342-7000"))
