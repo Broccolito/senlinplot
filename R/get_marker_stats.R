@@ -47,6 +47,12 @@ get_marker_stats = function(filename, dataset,
            all_of(pvalue_column_name),
            all_of(samplesize_column_name))
   names(d_snp) = c("marker", "effect", "se", "pvalue", "n")
+
+  if(used_inverse){
+    cat(paste0(snp_name, " may have inversed ref and alt...\n"))
+    d_snp[["effect"]] = -d_snp[["effect"]]
+  }
+
   d_snp = d_snp[1,]
   d_snp = d_snp %>%
     mutate(c95_upper = effect + 1.96*se) %>%
@@ -62,11 +68,6 @@ get_marker_stats = function(filename, dataset,
       ")"
     )) %>%
     select(marker, dataset, effect, se, pvalue, ci, c95_lower, c95_upper, n)
-
-  if(used_inverse){
-    cat(paste0(snp_name, " may have inversed ref and alt...\n"))
-    d_snp[["effect"]] = -d_snp[["effect"]]
-  }
 
   return(d_snp)
 }
