@@ -10,6 +10,7 @@
 #' @param stderr_column_name The column name of estimated standard error
 #' @param pvalue_column_name The column name of estimated P-value
 #' @param samplesize_column_name The column name of study sample size
+#' @param check_inverse_ref A boolean variable indicating whether to check for inversed reference and alternative allele. TRUE is only allowed for CHR:POS:REF:ALT format.
 #' @return NULL
 #' @examples
 #' plot_forestplot_from_file(

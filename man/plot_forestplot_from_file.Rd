@@ -12,7 +12,8 @@ plot_forestplot_from_file(
   effectsize_column_name = "Effect",
   stderr_column_name = "StdErr",
   pvalue_column_name = "P-value",
-  samplesize_column_name = "N"
+  samplesize_column_name = "N",
+  check_inverse_ref = FALSE
 )
 }
 \arguments{
@@ -31,6 +32,8 @@ plot_forestplot_from_file(
 \item{pvalue_column_name}{The column name of estimated P-value}
 
 \item{samplesize_column_name}{The column name of study sample size}
+
+\item{check_inverse_ref}{A boolean variable indicating whether to check for inversed reference and alternative allele. TRUE is only allowed for CHR:POS:REF:ALT format.}
 }
 \description{
 This function plots forest plot from GWAS summary statistics files
