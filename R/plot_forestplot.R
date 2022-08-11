@@ -23,6 +23,9 @@
 #' ) %>% plot_forestplot()
 #' @export
 plot_forestplot = function(stats){
+  if(dim(stats)[1]<=1){
+    return("Not enough data was provided...\n")
+  }
   stats[[" "]] = paste(rep(" ", 50), collapse = "")
   names(stats)[c(2, 6, 10, 5, 9)] = c("Dataset", "Beta (95% CI)", " ", "P-Value", "N")
   plt = forest(stats[,c(2, 6, 10, 5, 9)],

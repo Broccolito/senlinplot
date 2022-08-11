@@ -19,6 +19,12 @@ get_marker_stats = function(filename, dataset,
   d = fread(filename)
   d = as_tibble(d)
   d = d[d[,names(d)==identifier_column_name]==snp_name,]
+
+  if(dim(d)[1]==0){
+    cat(paste0("No Markers found in ", dataset, "...\n"))
+    return(NULL)
+  }
+
   d = d %>%
     select(all_of(identifier_column_name),
            all_of(effectsize_column_name),
