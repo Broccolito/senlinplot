@@ -12,28 +12,43 @@ get_marker_stats = function(filename, dataset,
                             effectsize_column_name,
                             stderr_column_name,
                             pvalue_column_name,
-                            samplesize_column_name){
+                            samplesize_column_name,
+                            check_inverse_ref){
+
+  used_inverse = FALSE
   filename = unlist(filename)
   dataset = unlist(dataset)
   cat(paste0("Looking for ", snp_name, " in ", filename, "...\n"))
   d = fread(filename)
   d = as_tibble(d)
-  d = d[d[,names(d)==identifier_column_name]==snp_name,]
+  d_snp = d[d[,names(d)==identifier_column_name]==snp_name,]
 
-  if(dim(d)[1]==0){
+  if(check_inverse_ref){
+    if(length(unlist(strsplit(snp_name, split = ":")))!=4){
+      return("SNP name not in chr:pos:ref:alt format...\n")
+    }
+    snp_name_inv = unlist(strsplit(snp_name, split = ":"))[c(1, 2, 4, 3)] %>%
+      paste(collapse = ":")
+    if(dim(d_snp)[1]==0){
+      d_snp = d[d[,names(d)==identifier_column_name]==snp_name_inv,]
+      used_inverse = TRUE
+    }
+  }
+
+  if(dim(d_snp)[1]==0){
     cat(paste0("No Markers found in ", dataset, "...\n"))
     return(NULL)
   }
 
-  d = d %>%
+  d_snp = d_snp %>%
     select(all_of(identifier_column_name),
            all_of(effectsize_column_name),
            all_of(stderr_column_name),
            all_of(pvalue_column_name),
            all_of(samplesize_column_name))
-  names(d) = c("marker", "effect", "se", "pvalue", "n")
-  d = d[1,]
-  d = d %>%
+  names(d_snp) = c("marker", "effect", "se", "pvalue", "n")
+  d_snp = d_snp[1,]
+  d_snp = d_snp %>%
     mutate(c95_upper = effect + 1.96*se) %>%
     mutate(c95_lower = effect - 1.96*se) %>%
     mutate(dataset = dataset) %>%
@@ -48,5 +63,10 @@ get_marker_stats = function(filename, dataset,
     )) %>%
     select(marker, dataset, effect, se, pvalue, ci, c95_lower, c95_upper, n)
 
-  return(d)
+  if(used_inverse){
+    cat(paste0(snp_name, " may have inversed ref and alt...\n"))
+    d_snp[["effect"]] = -d_snp[["effect"]]
+  }
+
+  return(d_snp)
 }

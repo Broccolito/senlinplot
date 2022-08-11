@@ -43,7 +43,8 @@ plot_forestplot_from_file = function(
     effectsize_column_name = "Effect",
     stderr_column_name = "StdErr",
     pvalue_column_name = "P-value",
-    samplesize_column_name = "N"
+    samplesize_column_name = "N",
+    check_inverse_ref = FALSE
 ){
   stats = get_all_stats(
     snp_name = snp_name,
@@ -53,7 +54,8 @@ plot_forestplot_from_file = function(
     effectsize_column_name = effectsize_column_name,
     stderr_column_name = stderr_column_name,
     pvalue_column_name = pvalue_column_name,
-    samplesize_column_name = samplesize_column_name
+    samplesize_column_name = samplesize_column_name,
+    check_inverse_ref = check_inverse_ref
   )
   plot_forestplot(stats)
 }

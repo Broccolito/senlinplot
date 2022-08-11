@@ -43,7 +43,8 @@ get_all_stats = function(
     effectsize_column_name = "Effect",
     stderr_column_name = "StdErr",
     pvalue_column_name = "P-value",
-    samplesize_column_name = "N"
+    samplesize_column_name = "N",
+    check_inverse_ref = FALSE
 ){
   filelist = tibble(filelist = filelist) %>%
     split(.$filelist)
@@ -55,7 +56,8 @@ get_all_stats = function(
                effectsize_column_name,
                stderr_column_name,
                pvalue_column_name,
-               samplesize_column_name) %>%
+               samplesize_column_name,
+               check_inverse_ref) %>%
     reduce(rbind.data.frame)
   return(stats)
 }
