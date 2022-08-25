@@ -64,5 +64,7 @@ plot_forestplot_from_file = function(
     samplesize_column_name = samplesize_column_name,
     check_inverse_ref = check_inverse_ref
   )
-  plot_forestplot(stats, device = device, plt_width = plt_width, plt_height = plt_height)
+  plot_forestplot(stats, device = device,
+                  plt_width = plt_width,
+                  plt_height = plt_height)
 }
