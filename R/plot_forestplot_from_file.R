@@ -12,6 +12,8 @@
 #' @param samplesize_column_name The column name of study sample size
 #' @param check_inverse_ref A boolean variable indicating whether to check for inversed reference and alternative allele. TRUE is only allowed for CHR:POS:REF:ALT format.
 #' @param device The format in which the forest plots are saved. png or pdf recommended
+#' @param plt_width The width of the plot generated in inches
+#' @param plt_height The height of the plot generated in inches
 #' @return NULL
 #' @examples
 #' plot_forestplot_from_file(
@@ -47,7 +49,9 @@ plot_forestplot_from_file = function(
     pvalue_column_name = "P-value",
     samplesize_column_name = "N",
     check_inverse_ref = FALSE,
-    device = "pdf"
+    device = "png",
+    plt_width = 15,
+    plt_height = 15
 ){
   stats = get_all_stats(
     snp_name = snp_name,
@@ -60,5 +64,5 @@ plot_forestplot_from_file = function(
     samplesize_column_name = samplesize_column_name,
     check_inverse_ref = check_inverse_ref
   )
-  plot_forestplot(stats, device = device)
+  plot_forestplot(stats, device = device, plt_width = plt_width, plt_height = plt_height)
 }
